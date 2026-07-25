@@ -163,6 +163,13 @@ a:focus-visible,button:focus-visible{ outline:2px solid var(--accent); outline-o
   color:var(--ink-thin);
   margin-top:.1rem;
 }
+.suno-player{
+  display:block;
+  width:100%;
+  height:240px;
+  margin-top:.75rem;
+  border:0;
+}
 
 button.title{
   background:none; border:0; padding:0;
@@ -224,7 +231,7 @@ button.title[aria-current="true"]{ color:var(--ink); }
 
     <div class="featured">
       <button class="title" data-yt="snhAe9Xo92A">名前のない音</button>
-      <span class="desc">MVあります。28秒。</span>
+      <span class="desc">MVあります。初めて作った曲。サビだけ（28秒）。全パート自分で演奏しています。</span>
     </div>
 
     <div class="player">
@@ -233,16 +240,17 @@ button.title[aria-current="true"]{ color:var(--ink); }
 
     <ul class="list">
       <li>
-        <span class="title">余白の向こう側</span>
-        <span class="desc">サビは固まって、いまAメロを旋律に合わせて書き直しているところ。</span>
-      </li>
-      <li>
-        <span class="title">椅子の上にも二十年</span>
-        <span class="desc">自分の時間と、世界の速さのずれについて。止まれ、笑え、踊れ。</span>
-      </li>
-      <li>
-        <span class="title">次の角まで</span>
-        <span class="desc">迷路を、外から見た地図ではなく、中にいる人の視点で。</span>
+        <span class="title">二月の空</span>
+        <span class="desc">
+          詞と曲は自作。歌と演奏はSunoにお願いし、女性の声で歌ってもらいました。
+        </span>
+        <iframe
+          class="suno-player"
+          src="https://suno.com/embed/b717e13a-b908-4a70-8f49-95a60bfc6845"
+          title="二月の空 — Sunoプレイヤー"
+          loading="lazy"
+          allow="autoplay"
+        ></iframe>
       </li>
     </ul>
   </section>
