@@ -92,6 +92,14 @@ a:focus-visible,button:focus-visible{ outline:2px solid var(--accent); outline-o
 }
 
 .lede{ margin:2rem 0 0; }
+.lede p{ margin:0 0 1.2rem; }
+.lede p:last-child{ margin-bottom:0; }
+.lede .lede-title,.closing-title{
+  font-family:var(--maru);
+  font-size:1.12rem;
+}
+.closing-title{ margin:3.5rem 0 0; }
+.closing-title + .foot{ margin-top:1.5rem; }
 
 /* ---------- 節 ---------- */
 
@@ -239,11 +247,24 @@ button.title[aria-current="true"]{ color:var(--ink); }
     <h1 class="logo">だいアリ～</h1>
     <p class="byline">渡辺悌<span class="romaji">Watanabe Dai</span></p>
 
-    <p class="lede">
-      Javaのエンジニアです。20年ほど業務システムを書いてきました。
-      仕事の外では、詞と曲を書いたり、コード譜を作ったり、小さい道具を作ったりしています。
-      ここは、その置き場です。
-    </p>
+    <div class="lede">
+      <p class="lede-title"><strong>ここは、僕の基地です。</strong></p>
+      <p>
+        仕事ではシステムをつくり、趣味では音楽をつくり、気になったことを考えたり、AIと話したりしています。
+      </p>
+      <p>
+        以前は、何かを発信するなら、毎日続けなければいけない、誰かに知ってもらわなければいけない、成果につなげなければいけない、と思っていました。でも、どうやら僕には、そんなふうに続けるのは向いていないようです。
+      </p>
+      <p>
+        このサイトは、更新を約束する場所ではありません。つくった音楽、書いた文章、便利だったツール、考えたこと。そのとき自分が面白いと思ったものを、少しずつ置いておく場所です。たまに何かが増えて、長いあいだ何も変わらないこともあると思います。
+      </p>
+      <p>
+        それでも、好きなことを楽しみながら積み重ねた跡は、ちゃんと残ります。ここに置いた何かが、いつか誰かの役に立ったり、心のどこかに少し引っかかったりしたら、うれしいです。
+      </p>
+      <p>
+        名前は、昔つくっていた日記サイトから借りました。日記ほどは更新しませんが。
+      </p>
+    </div>
   </header>
 
   <section class="sec">
@@ -342,6 +363,8 @@ button.title[aria-current="true"]{ color:var(--ink); }
       そのほかのことは <a href="https://x.com/DaiWataMusic" target="_blank" rel="me noopener">X<span class="new-tab-mark" aria-hidden="true"></span><span class="visually-hidden">（新しいタブで開く）</span></a> のDMへ。返信は少し時間をいただくかもしれません。
     </p>
   </section>
+
+  <p class="closing-title"><strong>それでは、いってらっしゃい。</strong></p>
 
   <footer class="foot">
     だいアリ～ &copy; 2026
