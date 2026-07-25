@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>だいアリ～</title>
+<meta name="description" content="渡辺悌の置き場。うた、楽譜、つくったもの、書きもの、しごと。">
+
+<meta property="og:title" content="だいアリ～">
+<meta property="og:description" content="渡辺悌の置き場。">
+<meta property="og:type" content="website">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Zen+Maru+Gothic:wght@500;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --ink:      #23282F;
+  --ink-thin: #6E7681;
+  --bg:       #F4F5F1;
+  --card:     #FFFFFF;
+  --line:     #DCDFD8;
+  --accent:   #12807F;
+  --accent-d: #0B5E5D;
+
+  --maru:   "Zen Maru Gothic", sans-serif;
+  --gothic: "Zen Kaku Gothic New", system-ui, sans-serif;
+}
+
+*,*::before,*::after{ box-sizing:border-box; }
+html{ -webkit-text-size-adjust:100%; }
+
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--gothic);
+  font-size:16px;
+  line-height:1.95;
+  font-feature-settings:"palt" 1;
+}
+
+a{ color:var(--accent); text-underline-offset:.25em; }
+a:hover{ color:var(--accent-d); }
+a:focus-visible,button:focus-visible{ outline:2px solid var(--accent); outline-offset:3px; border-radius:3px; }
+
+.wrap{ max-width:38rem; margin:0 auto; padding:0 1.5rem; }
+
+/* ---------- 冒頭 ---------- */
+
+.hero{ padding:4.5rem 0 3rem; }
+
+.logo{
+  font-family:var(--maru);
+  font-weight:700;
+  font-size:clamp(2.4rem,9vw,3.2rem);
+  line-height:1.2;
+  color:var(--accent);
+  margin:0;
+}
+
+.byline{
+  margin:.9rem 0 0;
+  font-size:.95rem;
+  letter-spacing:.06em;
+}
+.byline .romaji{
+  color:var(--ink-thin);
+  font-size:.8rem;
+  letter-spacing:.14em;
+  margin-left:.6rem;
+}
+
+.lede{ margin:2rem 0 0; }
+
+/* ---------- 節 ---------- */
+
+.sec{ padding:2.8rem 0 0; }
+
+.sec h2{
+  font-family:var(--maru);
+  font-weight:700;
+  font-size:1.3rem;
+  letter-spacing:.06em;
+  margin:0 0 1.1rem;
+  padding-bottom:.5rem;
+  border-bottom:1px solid var(--line);
+}
+
+.sec p{ margin:0 0 1.2rem; }
+.sec p:last-child{ margin-bottom:0; }
+
+/* ---------- プレイヤー ---------- */
+
+.player{
+  margin:0 0 1.6rem;
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:6px;
+  overflow:hidden;
+}
+
+.stage{
+  position:relative;
+  aspect-ratio:16/9;
+  background:#20262C;
+  display:block;
+  width:100%;
+  padding:0;
+  border:0;
+  cursor:pointer;
+  overflow:hidden;
+}
+.stage img{
+  width:100%; height:100%;
+  object-fit:cover; display:block;
+  opacity:.72;
+  transition:opacity .25s ease, transform .5s ease;
+}
+.stage:hover img{ opacity:.92; transform:scale(1.02); }
+.stage iframe{ width:100%; height:100%; border:0; display:block; }
+
+.play{ position:absolute; inset:0; display:grid; place-items:center; pointer-events:none; }
+.play span{
+  width:4.2rem; height:4.2rem;
+  border-radius:50%;
+  background:rgba(255,255,255,.94);
+  display:grid; place-items:center;
+  box-shadow:0 3px 14px rgba(0,0,0,.28);
+  transition:transform .25s ease;
+}
+.stage:hover .play span{ transform:scale(1.08); }
+.play span::after{
+  content:"";
+  width:0;height:0;
+  margin-left:.28rem;
+  border-left:1.15rem solid var(--accent);
+  border-top:.72rem solid transparent;
+  border-bottom:.72rem solid transparent;
+}
+
+.stage-empty{
+  position:absolute; inset:0;
+  display:grid; place-items:center;
+  padding:1.5rem; text-align:center;
+  color:#B9C0C6; font-size:.88rem; line-height:1.9;
+}
+
+.now{
+  margin:0;
+  padding:.85rem 1.1rem;
+  border-top:1px solid var(--line);
+  font-family:var(--maru);
+  font-weight:500;
+  font-size:.98rem;
+}
+
+/* ---------- 一覧 ---------- */
+
+.list{ list-style:none; margin:0 0 1.4rem; padding:0; }
+.list li{ padding:.85rem 0; border-bottom:1px solid var(--line); }
+.list li:first-child{ padding-top:.2rem; }
+.list .title{ font-family:var(--maru); font-weight:500; font-size:1.02rem; }
+.list .desc{
+  display:block;
+  font-size:.88rem; line-height:1.85;
+  color:var(--ink-thin);
+  margin-top:.1rem;
+}
+
+button.title{
+  background:none; border:0; padding:0;
+  cursor:pointer;
+  color:var(--accent);
+  font-family:var(--maru);
+  font-weight:500;
+  font-size:1.02rem;
+  line-height:inherit;
+}
+button.title:hover{ color:var(--accent-d); text-decoration:underline; text-underline-offset:.25em; }
+button.title::before{
+  content:"";
+  display:inline-block;
+  width:0;height:0;
+  margin-right:.5rem;
+  border-left:.5rem solid currentColor;
+  border-top:.32rem solid transparent;
+  border-bottom:.32rem solid transparent;
+}
+button.title[aria-current="true"]{ color:var(--ink); }
+
+/* ---------- 技術 ---------- */
+
+.stack{ margin:0 0 1.2rem; font-size:.88rem; color:var(--ink-thin); line-height:2.1; }
+
+/* ---------- 脚 ---------- */
+
+.foot{
+  margin-top:3.5rem;
+  padding:1.4rem 0 4rem;
+  border-top:1px solid var(--line);
+  font-size:.82rem;
+  color:var(--ink-thin);
+}
+
+@media (max-width:600px){
+  .hero{ padding:3.2rem 0 2.2rem; }
+  .sec{ padding-top:2.4rem; }
+}
+
+@media (prefers-reduced-motion:reduce){
+  .stage img,.play span{ transition:none; }
+  .stage:hover img{ transform:none; }
+}
+</style>
+</head>
+<body>
+
+<main class="wrap">
+
+  <header class="hero">
+    <h1 class="logo">だいアリ～</h1>
+    <p class="byline">渡辺悌<span class="romaji">Watanabe Dai</span></p>
+
+    <p class="lede">
+      Javaのエンジニアです。20年ほど業務システムを書いてきました。
+      仕事の外では、詞と曲を書いたり、コード譜を作ったり、小さい道具を作ったりしています。
+      ここは、その置き場です。
+    </p>
+  </header>
+
+  <section class="sec">
+    <h2>うた</h2>
+    <p>
+      2026年のはじめから、詞と曲を書いています。日常の手ざわりのある言葉と、少し硬い言葉を混ぜるのが好きです。
+    </p>
+
+    <div class="player">
+      <button class="stage" id="stage" type="button" aria-label="再生する"></button>
+      <p class="now" id="now"></p>
+    </div>
+
+    <ul class="list">
+      <li>
+        <button class="title" data-yt="snhAe9Xo92A">名前のない音</button>
+        <span class="desc">MVあります。28秒。</span>
+      </li>
+      <li>
+        <span class="title">余白の向こう側</span>
+        <span class="desc">サビは固まって、いまAメロを旋律に合わせて書き直しているところ。</span>
+      </li>
+      <li>
+        <span class="title">椅子の上にも二十年</span>
+        <span class="desc">自分の時間と、世界の速さのずれについて。止まれ、笑え、踊れ。</span>
+      </li>
+      <li>
+        <span class="title">次の角まで</span>
+        <span class="desc">迷路を、外から見た地図ではなく、中にいる人の視点で。</span>
+      </li>
+    </ul>
+  </section>
+
+  <section class="sec">
+    <h2>楽譜</h2>
+    <p>
+      弾き語りの場で使うために、J-POPのコード譜を1ページに収める形で作りためてきました。
+      譜面をめくらなくていい、というだけのことですが、その場に立つと、それがいちばん効きます。
+    </p>
+    <p>
+      そのうち、人に渡せる出来のものを <a href="https://store.piascore.com/search?c=7569" rel="noopener">Piascore</a> に置いています。
+    </p>
+  </section>
+
+  <section class="sec">
+    <h2>つくったもの</h2>
+    <p>
+      自分が困ったところだけ、小さく作ります。置きっぱなしにしても壊れないものが好きです。
+    </p>
+    <ul class="list">
+      <li>
+        <span class="title">YAML HTML Preview</span>
+        <span class="desc">YAMLを書くと、その場でHTMLの見た目を確認できるもの。<a href="https://daiwata.github.io/react-yaml-html-preview/" rel="noopener">開く</a></span>
+      </li>
+      <li>
+        <span class="title">詞の分析ツール</span>
+        <span class="desc">歌いやすさの目安を出すもの。Pythonで製作中。</span>
+      </li>
+      <li>
+        <span class="title">そのほかの小さいもの</span>
+        <span class="desc"><a href="https://github.com/daiwata" rel="me noopener">GitHub</a> に置いてあります。</span>
+      </li>
+    </ul>
+  </section>
+
+  <section class="sec">
+    <h2>書きもの</h2>
+    <p>
+      あとから同じ道を通る人が、少しだけ楽になるかもしれないことを書きます。
+    </p>
+    <ul class="list">
+      <li>
+        <span class="title">走れてしまった</span>
+        <span class="desc">体調を崩してからの記録。<a href="https://note.com/daiwata/n/n32b04e8ad1ad" rel="noopener">読む</a></span>
+      </li>
+    </ul>
+    <p><a href="https://note.com/daiwata" rel="me noopener">noteの一覧</a></p>
+  </section>
+
+  <section class="sec">
+    <h2>しごと</h2>
+    <p>
+      業務システムの開発を20年以上。設計から、動かなくなったものの原因を探すところまで。
+      Javaと、その周りのフレームワークが長いです。
+    </p>
+    <p class="stack">
+      Java / Spring Boot / Spring Batch / Spring Integration / MyBatis / JUnit / PostgreSQL
+    </p>
+  </section>
+
+  <section class="sec">
+    <h2>連絡</h2>
+    <p>
+      うたの感想は、YouTubeのコメントでも届きます。
+      そのほかのことは <a href="https://x.com/DaiWataMusic" rel="me noopener">X</a> のDMへ。返信は少し時間をいただくかもしれません。
+    </p>
+  </section>
+
+  <footer class="foot">
+    だいアリ～ &copy; 2026
+  </footer>
+
+</main>
+
+<script>
+/* ===== うたのプレイヤー ===== */
+(function () {
+  var stage  = document.getElementById('stage');
+  var now    = document.getElementById('now');
+  var tracks = Array.prototype.slice.call(document.querySelectorAll('button.title[data-yt]'));
+  if (!stage || !tracks.length) return;
+
+  var current = null;
+
+  function isPlaceholder(id){ return !id || id.indexOf('YOUTUBE_ID') === 0; }
+
+  function show(track) {
+    var id = track.dataset.yt, title = track.textContent.trim();
+    current = track;
+    tracks.forEach(function (t) { t.setAttribute('aria-current', String(t === track)); });
+    now.textContent = title;
+    stage.setAttribute('aria-label', title + ' を再生する');
+
+    if (isPlaceholder(id)) {
+      stage.innerHTML = '<div class="stage-empty">この曲の動画IDがまだ入っていません。<br>' +
+        'HTMLの data-yt を、YouTubeの動画IDに差し替えてください。</div>';
+      stage.disabled = true;
+      return;
+    }
+    stage.disabled = false;
+    stage.innerHTML =
+      '<img src="https://i.ytimg.com/vi/' + id + '/maxresdefault.jpg" alt="" ' +
+      'onerror="this.src=\'https://i.ytimg.com/vi/' + id + '/hqdefault.jpg\'">' +
+      '<span class="play"><span></span></span>';
+  }
+
+  function play() {
+    if (!current) return;
+    var id = current.dataset.yt;
+    if (isPlaceholder(id)) return;
+    stage.outerHTML =
+      '<div class="stage"><iframe src="https://www.youtube-nocookie.com/embed/' + id +
+      '?autoplay=1&rel=0" title="' + current.textContent.trim() +
+      '" allow="accelerometer; autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe></div>';
+    stage = document.querySelector('.player .stage');
+  }
+
+  stage.addEventListener('click', play);
+
+  tracks.forEach(function (t) {
+    t.addEventListener('click', function () {
+      if (document.querySelector('.player iframe')) {
+        document.querySelector('.player .stage').outerHTML =
+          '<button class="stage" id="stage" type="button"></button>';
+        stage = document.getElementById('stage');
+        stage.addEventListener('click', play);
+      }
+      show(t);
+    });
+  });
+
+  show(tracks[0]);
+})();
+</script>
+
+</body>
+</html>
