@@ -98,8 +98,26 @@ a:focus-visible,button:focus-visible{ outline:2px solid var(--accent); outline-o
   font-family:var(--maru);
   font-size:1.12rem;
 }
+.basecamp{
+  display:block;
+  width:100%;
+  max-width:23rem;
+  height:auto;
+  margin:1.9rem auto 2.1rem;
+  color:var(--accent);
+}
+
 .closing-title{ margin:3.5rem 0 0; }
-.closing-title + .foot{ margin-top:1.5rem; }
+.farewell{
+  display:block;
+  width:100%;
+  max-width:23rem;
+  height:auto;
+  margin:1.1rem auto 0;
+  color:var(--accent);
+}
+.closing-title + .foot,
+.farewell + .foot{ margin-top:1.5rem; }
 
 /* ---------- 節 ---------- */
 
@@ -249,6 +267,62 @@ button.title[aria-current="true"]{ color:var(--ink); }
 
     <div class="lede">
       <p class="lede-title"><strong>ここは、僕の基地です。</strong></p>
+
+      <svg class="basecamp" viewBox="0 0 420 150" role="img" aria-label="灯台と桟橋のある港、沖へ出ていく船の線画">
+        <g fill="none" stroke="currentColor"
+           stroke-linecap="round" stroke-linejoin="round">
+
+          <!-- 水平線（灯台の裏は隠れる） -->
+          <g stroke-width="1.4" opacity=".2">
+            <path d="M14 78 H70"/>
+            <path d="M98 78 H406"/>
+          </g>
+
+          <!-- 灯台 -->
+          <g stroke-width="2.3">
+            <path d="M66 112 L75 44 H93 L102 112"/>
+            <path d="M72 44 V34 H96 V44"/>
+            <path d="M67 34 L84 22 L101 34"/>
+            <path d="M73 60 H95" opacity=".5"/>
+            <path d="M78 112 V100 H88 V112" opacity=".5"/>
+          </g>
+
+          <!-- 桟橋 -->
+          <g stroke-width="2" opacity=".62">
+            <path d="M102 112 H220"/>
+            <path d="M118 112 V125 M142 112 V125 M166 112 V125 M190 112 V125 M216 112 V125"/>
+          </g>
+
+          <!-- 出ていく船 -->
+          <g stroke-width="1.8" opacity=".5">
+            <path d="M258 108 L264 117 H300 L308 108 Z"/>
+            <path d="M282 108 V76"/>
+            <path d="M282 78 L302 104 H282 Z"/>
+          </g>
+
+          <!-- 遠くの船 -->
+          <g stroke-width="1.4" opacity=".28">
+            <path d="M348 77 q11 5 22 0"/>
+            <path d="M359 77 V61"/>
+            <path d="M359 63 L369 75 H359 Z"/>
+          </g>
+
+          <!-- 波（奥・小さく低く） -->
+          <g stroke-width="1.3" opacity=".18">
+            <path d="M132 92 q5 -3 10 0 q5 3 10 0"/>
+            <path d="M216 98 q5 -3 10 0 q5 3 10 0"/>
+            <path d="M330 90 q5 -3 10 0 q5 3 10 0"/>
+          </g>
+
+          <!-- 波（手前） -->
+          <g stroke-width="1.6" opacity=".28">
+            <path d="M30 132 q7 -5 14 0 q7 5 14 0"/>
+            <path d="M150 140 q7 -5 14 0 q7 5 14 0"/>
+            <path d="M300 130 q7 -5 14 0 q7 5 14 0"/>
+          </g>
+        </g>
+      </svg>
+
       <p>
         仕事ではシステムをつくり、趣味では音楽をつくり、気になったことを考えたり、AIと話したりしています。
       </p>
@@ -365,6 +439,43 @@ button.title[aria-current="true"]{ color:var(--ink); }
   </section>
 
   <p class="closing-title"><strong>それでは、いってらっしゃい。</strong></p>
+
+  <svg class="farewell" viewBox="0 0 420 90" role="img" aria-label="水平線と、沖を行く船の線画">
+    <g fill="none" stroke="currentColor"
+       stroke-linecap="round" stroke-linejoin="round">
+      <!-- 水平線（帆の裏は隠れる） -->
+      <g stroke-width="1.4" opacity=".2">
+        <path d="M14 26 H285"/>
+        <path d="M290 26 H406"/>
+      </g>
+
+      <!-- 遠くの桟橋 -->
+      <g stroke-width="1.4" opacity=".36">
+        <path d="M14 34 H69"/>
+        <path d="M25 34 V40 M39 34 V40 M53 34 V40 M66 34 V40"/>
+      </g>
+
+      <!-- 沖を行く船 -->
+      <g stroke-width="1.8" opacity=".48">
+        <path d="M264 52 L270 61 H304 L311 52 Z"/>
+        <path d="M287 52 V22"/>
+        <path d="M287 24 L305 49 H287 Z"/>
+      </g>
+
+      <!-- 波（奥） -->
+      <g stroke-width="1.3" opacity=".15">
+        <path d="M120 40 q5 -3 10 0 q5 3 10 0"/>
+        <path d="M356 38 q5 -3 10 0 q5 3 10 0"/>
+      </g>
+
+      <!-- 波（手前） -->
+      <g stroke-width="1.5" opacity=".22">
+        <path d="M50 72 q6 -4 12 0 q6 4 12 0"/>
+        <path d="M180 79 q6 -4 12 0 q6 4 12 0"/>
+        <path d="M338 70 q6 -4 12 0 q6 4 12 0"/>
+      </g>
+    </g>
+  </svg>
 
   <footer class="foot">
     だいアリ～ &copy; 2026
