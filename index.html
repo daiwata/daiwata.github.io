@@ -93,6 +93,10 @@ a:focus-visible,button:focus-visible{ outline:2px solid var(--accent); outline-o
 
 /* ---------- プレイヤー ---------- */
 
+.featured{
+  margin:0 0 .7rem;
+}
+
 .player{
   margin:0 0 1.6rem;
   background:var(--card);
@@ -147,22 +151,13 @@ a:focus-visible,button:focus-visible{ outline:2px solid var(--accent); outline-o
   color:#B9C0C6; font-size:.88rem; line-height:1.9;
 }
 
-.now{
-  margin:0;
-  padding:.85rem 1.1rem;
-  border-top:1px solid var(--line);
-  font-family:var(--maru);
-  font-weight:500;
-  font-size:.98rem;
-}
-
 /* ---------- 一覧 ---------- */
 
 .list{ list-style:none; margin:0 0 1.4rem; padding:0; }
 .list li{ padding:.85rem 0; border-bottom:1px solid var(--line); }
 .list li:first-child{ padding-top:.2rem; }
 .list .title{ font-family:var(--maru); font-weight:500; font-size:1.02rem; }
-.list .desc{
+.list .desc,.featured .desc{
   display:block;
   font-size:.88rem; line-height:1.85;
   color:var(--ink-thin);
@@ -179,15 +174,6 @@ button.title{
   line-height:inherit;
 }
 button.title:hover{ color:var(--accent-d); text-decoration:underline; text-underline-offset:.25em; }
-button.title::before{
-  content:"";
-  display:inline-block;
-  width:0;height:0;
-  margin-right:.5rem;
-  border-left:.5rem solid currentColor;
-  border-top:.32rem solid transparent;
-  border-bottom:.32rem solid transparent;
-}
 button.title[aria-current="true"]{ color:var(--ink); }
 
 /* ---------- 技術 ---------- */
@@ -236,16 +222,16 @@ button.title[aria-current="true"]{ color:var(--ink); }
       2026年のはじめから、詞と曲を書いています。日常の手ざわりのある言葉と、少し硬い言葉を混ぜるのが好きです。
     </p>
 
+    <div class="featured">
+      <button class="title" data-yt="snhAe9Xo92A">名前のない音</button>
+      <span class="desc">MVあります。28秒。</span>
+    </div>
+
     <div class="player">
       <button class="stage" id="stage" type="button" aria-label="再生する"></button>
-      <p class="now" id="now"></p>
     </div>
 
     <ul class="list">
-      <li>
-        <button class="title" data-yt="snhAe9Xo92A">名前のない音</button>
-        <span class="desc">MVあります。28秒。</span>
-      </li>
       <li>
         <span class="title">余白の向こう側</span>
         <span class="desc">サビは固まって、いまAメロを旋律に合わせて書き直しているところ。</span>
@@ -281,10 +267,6 @@ button.title[aria-current="true"]{ color:var(--ink); }
       <li>
         <span class="title">YAML HTML Preview</span>
         <span class="desc">YAMLを書くと、その場でHTMLの見た目を確認できるもの。<a href="https://daiwata.github.io/react-yaml-html-preview/" rel="noopener">開く</a></span>
-      </li>
-      <li>
-        <span class="title">詞の分析ツール</span>
-        <span class="desc">歌いやすさの目安を出すもの。Pythonで製作中。</span>
       </li>
       <li>
         <span class="title">そのほかの小さいもの</span>
@@ -336,7 +318,6 @@ button.title[aria-current="true"]{ color:var(--ink); }
 /* ===== うたのプレイヤー ===== */
 (function () {
   var stage  = document.getElementById('stage');
-  var now    = document.getElementById('now');
   var tracks = Array.prototype.slice.call(document.querySelectorAll('button.title[data-yt]'));
   if (!stage || !tracks.length) return;
 
@@ -348,7 +329,6 @@ button.title[aria-current="true"]{ color:var(--ink); }
     var id = track.dataset.yt, title = track.textContent.trim();
     current = track;
     tracks.forEach(function (t) { t.setAttribute('aria-current', String(t === track)); });
-    now.textContent = title;
     stage.setAttribute('aria-label', title + ' を再生する');
 
     if (isPlaceholder(id)) {
